@@ -47,7 +47,7 @@
 
 	<properties>
 		<storm.version>0.9.1-incubating</storm.version>
-		<cassandra.version>1.2.5</cassandra.version>
+		<cassandra.version>3.11.2</cassandra.version>
 	</properties>
 
 	<dependencies>
@@ -83,7 +83,7 @@
 		<dependency>
 			<groupId>com.datastax.cassandra</groupId>
 			<artifactId>cassandra-driver-core</artifactId>
-			<version>3.0.0</version>
+			<version>3.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.cassandraunit</groupId>

@@ -5,7 +5,8 @@ import com.datastax.driver.core.ProtocolOptions;
 
 public class CqlClientFactoryTestConstants {
 
-    public static final String HOSTS = "localhost,remotehost:1234";
+//    public static final String HOSTS = "localhost,remotehost:1234";
+    public static final String HOSTS = "127.0.0.1";
     public static final String CLUSTER_NAME = "Test Cluster";
     public static final ConsistencyLevel DEFAULT_CONSISTENCY_LEVEL = ConsistencyLevel.LOCAL_QUORUM;
     public static final ConsistencyLevel DEFAULT_SERIAL_CONSISTENCY_LEVEL = ConsistencyLevel.SERIAL;

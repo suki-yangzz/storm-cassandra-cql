@@ -8,6 +8,7 @@ import com.datastax.driver.core.QueryOptions;
 import com.datastax.driver.core.SocketOptions;
 import com.datastax.driver.core.policies.DCAwareRoundRobinPolicy;
 import com.datastax.driver.core.policies.LoadBalancingPolicy;
+import com.datastax.driver.core.ProtocolVersion;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +55,9 @@ public class MapConfiguredCqlClientFactory extends CqlClientFactory {
                 LOG.debug("Configuring [" + host + "] with port [" + ProtocolOptions.DEFAULT_PORT + "]");
             }
         }
-        builder = builder.addContactPointsWithPorts(sockets);
+//        builder = builder.addContactPointsWithPorts(sockets);
+        builder = builder.addContactPoint("127.0.0.1").withPort(9042).withProtocolVersion(ProtocolVersion.V4);
+
     }
 
     private void configureSocketOpts() {

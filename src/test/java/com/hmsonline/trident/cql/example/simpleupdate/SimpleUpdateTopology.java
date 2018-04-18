@@ -32,7 +32,8 @@ public class SimpleUpdateTopology {
 
     public static void main(String[] args) throws Exception {
         final Config configuration = new Config();
-        configuration.put(MapConfiguredCqlClientFactory.TRIDENT_CASSANDRA_CQL_HOSTS, "localhost");
+        configuration.put(MapConfiguredCqlClientFactory.TRIDENT_CASSANDRA_CQL_HOSTS, "127.0.0.1");
+        configuration.put(MapConfiguredCqlClientFactory.TRIDENT_CASSANDRA_CLUSTER_NAME, "Test Cluster");
         final LocalCluster cluster = new LocalCluster();
         LOG.info("Submitting topology.");
         cluster.submitTopology("cqlexample", configuration, buildTopology());

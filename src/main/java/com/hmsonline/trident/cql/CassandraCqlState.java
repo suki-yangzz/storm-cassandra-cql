@@ -47,13 +47,25 @@ public class CassandraCqlState implements State {
             batch.add(statement);
             i++;
             if(i >= this.maxBatchSize) {
-                clientFactory.getSession().execute(batch);
+                clientFactory.getSession().execute("CREATE KEYSPACE IF NOT EXISTS mykeyspace1 WITH replication = {"
+                        + " 'class': 'SimpleStrategy', "
+                        + " 'replication_factor': '3' "
+                        + "};" );
+                clientFactory.getSession().execute("CREATE TABLE IF NOT EXISTS mykeyspace1.mytable1 (\n" +
+                        "                        t int,\n" +
+                        "                col1 text,\n" +
+                        "                primary key (t)\n" +
+                        ");" );
+
+                clientFactory.getSession("mykeyspace1").execute(batch);
+//                clientFactory.getSession().execute(batch);
                 batch = new BatchStatement(batchType);
                 i = 0;
             }
         }
         if(i > 0) {
-            clientFactory.getSession().execute(batch);
+            clientFactory.getSession("mykeyspace1").execute(batch);
+//            clientFactory.getSession().execute(batch);
         }
         this.statements.clear();
     }
